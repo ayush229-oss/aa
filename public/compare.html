@@ -250,6 +250,113 @@
     }
     .footnote a { color: #374151; text-decoration: underline; }
 
+    /* ── Business Operations ── */
+    .ops-section {
+      max-width: 980px;
+      margin: 60px auto 0;
+      padding: 0 24px;
+    }
+    .ops-title { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .ops-sub { font-size: 13px; color: #4b5563; margin-bottom: 28px; }
+
+    .ops-block {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .ops-block-header {
+      background: #0d1018;
+      padding: 12px 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4b5563;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    /* Revenue model cards */
+    .ops-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .ops-card { padding: 20px; }
+    .ops-card-at { border-right: 1px solid #1f2937; }
+    .ops-card-name { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+    .ops-card-at .ops-card-name { color: #60a5fa; }
+    .ops-card-sm .ops-card-name { color: #c084fc; }
+    .ops-model-type { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #4b5563; margin-bottom: 14px; }
+    .ops-model-rows { display: flex; flex-direction: column; gap: 8px; }
+    .ops-model-row { display: flex; flex-direction: column; gap: 2px; }
+    .ops-mkey { font-size: 11px; color: #4b5563; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+    .ops-mval { font-size: 13px; color: #9ca3af; }
+    .ops-packs .ops-mval { display: none; }
+    .ops-pack-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .ops-pack-list span {
+      background: #1a1d2e;
+      border: 1px solid #2a2e3f;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    /* Compare rows */
+    .ops-compare-rows { display: flex; flex-direction: column; }
+    .ops-crow {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr 2fr;
+      border-bottom: 1px solid #1a1d2b;
+    }
+    .ops-crow:last-child { border-bottom: none; }
+    .ops-crow > div { padding: 12px 18px; font-size: 13px; }
+    .ops-crow > div:first-child { color: #6b7280; font-weight: 500; border-right: 1px solid #1a1d2b; }
+    .ops-crow > div:nth-child(2) { color: #9ca3af; border-right: 1px solid #1a1d2b; }
+    .ops-crow > div:nth-child(3) { color: #9ca3af; }
+    .ops-crow-head > div { background: #0a0d14; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #4b5563; padding: 10px 18px; }
+    .ops-crow-head > div:first-child { color: #374151; }
+
+    /* Market stats */
+    .ops-market-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .ops-market-stat {
+      padding: 20px;
+      border-right: 1px solid #1a1d2b;
+      border-bottom: 1px solid #1a1d2b;
+    }
+    .ops-market-stat:nth-child(3),
+    .ops-market-stat:nth-child(6) { border-right: none; }
+    .ops-market-stat:nth-child(4),
+    .ops-market-stat:nth-child(5),
+    .ops-market-stat:nth-child(6) { border-bottom: none; }
+    .ops-stat-val { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .ops-stat-label { font-size: 12px; color: #4b5563; line-height: 1.4; }
+    .ops-market-note {
+      padding: 16px 20px;
+      font-size: 12.5px;
+      color: #6b7280;
+      border-top: 1px solid #1a1d2b;
+      line-height: 1.6;
+    }
+    .ops-market-note strong { color: #9ca3af; }
+
+    /* Positioning */
+    .ops-pos-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .ops-pos-card { padding: 20px; }
+    .ops-pos-at { border-right: 1px solid #1f2937; }
+    .ops-pos-name { font-size: 14px; font-weight: 800; margin-bottom: 14px; }
+    .ops-pos-at .ops-pos-name { color: #60a5fa; }
+    .ops-pos-sm .ops-pos-name { color: #c084fc; }
+    .ops-pos-items { display: flex; flex-direction: column; gap: 10px; }
+    .ops-pos-row { display: flex; gap: 10px; font-size: 13px; color: #9ca3af; line-height: 1.5; }
+    .ops-pos-row strong { color: #d1d5db; }
+    .ops-pos-icon { font-size: 14px; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+    .ops-pos-win { color: #34d399; }
+    .ops-pos-risk { color: #ef4444; }
+
     /* ── Growth Analytics ── */
     .growth-section {
       max-width: 980px;
@@ -933,6 +1040,193 @@
     </ul>
     <div class="best-for"><strong>Best for:</strong> Beginners and learners who want to test expiry strategies and understand options before going live.</div>
   </div>
+</div>
+
+<!-- Business Operations -->
+<div class="ops-section">
+  <h2 class="ops-title">Business Operations</h2>
+  <p class="ops-sub">How each company operates, makes money, and fits into the broader Indian algo trading market</p>
+
+  <!-- Revenue model -->
+  <div class="ops-block">
+    <div class="ops-block-header">Revenue Model</div>
+    <div class="ops-two-col">
+
+      <div class="ops-card ops-card-at">
+        <div class="ops-card-name">AlgoTest</div>
+        <div class="ops-model-type">Credit-based wallet + Subscription</div>
+        <div class="ops-model-rows">
+          <div class="ops-model-row">
+            <span class="ops-mkey">How it works</span>
+            <span class="ops-mval">Users buy credit packs, then spend credits on each activity — backtest, paper trade, or live deploy</span>
+          </div>
+          <div class="ops-model-row">
+            <span class="ops-mkey">Backtest</span>
+            <span class="ops-mval">1 credit per run &nbsp;·&nbsp; 25 free/week</span>
+          </div>
+          <div class="ops-model-row">
+            <span class="ops-mkey">Paper trade</span>
+            <span class="ops-mval">50 credits per strategy / 28 days</span>
+          </div>
+          <div class="ops-model-row">
+            <span class="ops-mkey">Live execution</span>
+            <span class="ops-mval">100 credits per strategy / 28 days</span>
+          </div>
+          <div class="ops-model-row ops-packs">
+            <span class="ops-mkey">Credit packs</span>
+            <div class="ops-pack-list">
+              <span>₹499 → 500 cr</span>
+              <span>₹999 → 1,100 cr</span>
+              <span>₹2,499 → 3,000 cr</span>
+              <span>₹5,999 → 7,500 cr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ops-card ops-card-sm">
+        <div class="ops-card-name">StockMock</div>
+        <div class="ops-model-type">Flat monthly subscription (freemium)</div>
+        <div class="ops-model-rows">
+          <div class="ops-model-row">
+            <span class="ops-mkey">How it works</span>
+            <span class="ops-mval">Backtesting is permanently free; advanced features gated behind a low monthly fee</span>
+          </div>
+          <div class="ops-model-row">
+            <span class="ops-mkey">Backtest</span>
+            <span class="ops-mval">Free — unlimited</span>
+          </div>
+          <div class="ops-model-row">
+            <span class="ops-mkey">Simulator + Builder + Charts</span>
+            <span class="ops-mval">₹250/month</span>
+          </div>
+          <div class="ops-model-row">
+            <span class="ops-mkey">Pro Plan (from Dec 2025)</span>
+            <span class="ops-mval">₹349/month — unified plan</span>
+          </div>
+          <div class="ops-model-row">
+            <span class="ops-mkey">No usage-based billing</span>
+            <span class="ops-mval">Flat fee regardless of how much you use</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Operations model -->
+  <div class="ops-block">
+    <div class="ops-block-header">How They Operate</div>
+    <div class="ops-compare-rows">
+      <div class="ops-crow ops-crow-head">
+        <div></div>
+        <div style="color:#60a5fa">AlgoTest</div>
+        <div style="color:#c084fc">StockMock</div>
+      </div>
+      <div class="ops-crow">
+        <div>Business type</div>
+        <div>B2C SaaS — full algo trading platform</div>
+        <div>B2C SaaS — backtest/simulation tool</div>
+      </div>
+      <div class="ops-crow">
+        <div>Operating model</div>
+        <div>Platform + broker pipeline (SEBI-compliant agent model)</div>
+        <div>Standalone tool, no broker dependency</div>
+      </div>
+      <div class="ops-crow">
+        <div>Regulatory position</div>
+        <div>SEBI-empanelled algo provider; acts as agent of registered stockbrokers</div>
+        <div>Not regulated — simulation only, no live execution</div>
+      </div>
+      <div class="ops-crow">
+        <div>Broker relationship</div>
+        <div>60+ live broker integrations; revenue-share model enabled under SEBI 2025 rules</div>
+        <div>None — no broker ties</div>
+      </div>
+      <div class="ops-crow">
+        <div>Infrastructure</div>
+        <div>Hosted on broker-integrated servers (SEBI mandated)</div>
+        <div>Independent web + desktop app</div>
+      </div>
+      <div class="ops-crow">
+        <div>Strategy type allowed</div>
+        <div>White-box only (strategy logic fully visible per SEBI rules)</div>
+        <div>Any — no regulatory restriction on simulation</div>
+      </div>
+      <div class="ops-crow">
+        <div>Customer acquisition</div>
+        <div>Organic search, Telegram community, YC network, broker referrals</div>
+        <div>Organic search, YouTube, direct (70% traffic is direct)</div>
+      </div>
+      <div class="ops-crow">
+        <div>Headquartered</div>
+        <div>Delhi, India</div>
+        <div>Delhi, India</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Market context -->
+  <div class="ops-block">
+    <div class="ops-block-header">Market They Operate In</div>
+    <div class="ops-market-grid">
+      <div class="ops-market-stat">
+        <div class="ops-stat-val">$562M</div>
+        <div class="ops-stat-label">India algo trading market size (2024)</div>
+      </div>
+      <div class="ops-market-stat">
+        <div class="ops-stat-val">$1.27B</div>
+        <div class="ops-stat-label">Projected market size by 2033</div>
+      </div>
+      <div class="ops-market-stat">
+        <div class="ops-stat-val">9.5%</div>
+        <div class="ops-stat-label">CAGR 2025–2033</div>
+      </div>
+      <div class="ops-market-stat">
+        <div class="ops-stat-val">60–73%</div>
+        <div class="ops-stat-label">NSE volume driven by algos</div>
+      </div>
+      <div class="ops-market-stat">
+        <div class="ops-stat-val">#4</div>
+        <div class="ops-stat-label">AlgoTest rank among 27 competitors</div>
+      </div>
+      <div class="ops-market-stat">
+        <div class="ops-stat-val">Feb 2025</div>
+        <div class="ops-stat-label">SEBI retail algo framework enacted</div>
+      </div>
+    </div>
+    <div class="ops-market-note">
+      Key competitors in the space: <strong>Tradetron</strong> (closest to AlgoTest), <strong>Sensibull</strong>, <strong>Streak</strong>, <strong>uTrade Algos</strong>, <strong>Opstra</strong>, <strong>QuantMan</strong>. StockMock competes narrowly against <strong>Opstra</strong> and <strong>OptionBacktesting.in</strong> in the pure backtesting segment.
+    </div>
+  </div>
+
+  <!-- Competitive positioning -->
+  <div class="ops-block">
+    <div class="ops-block-header">Competitive Position</div>
+    <div class="ops-pos-grid">
+      <div class="ops-pos-card ops-pos-at">
+        <div class="ops-pos-name">AlgoTest</div>
+        <div class="ops-pos-items">
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-win">↑</span><div><strong>Moat:</strong> Full pipeline (backtest → live) under one roof, SEBI-compliant infrastructure already in place</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-win">↑</span><div><strong>Advantage:</strong> YC backing opens doors to brokers, partnerships, and international expansion</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-win">↑</span><div><strong>Tailwind:</strong> SEBI 2025 retail algo framework is a direct tailwind — AlgoTest is positioned exactly where regulations are pointing</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-risk">↓</span><div><strong>Risk:</strong> Credit-based billing gets expensive for active users; growing team = growing burn</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-risk">↓</span><div><strong>Risk:</strong> Heavy competition — Tradetron, Streak, and broker-native tools (Zerodha Streak) are all fighting for the same user</div></div>
+        </div>
+      </div>
+      <div class="ops-pos-card ops-pos-sm">
+        <div class="ops-pos-name">StockMock</div>
+        <div class="ops-pos-items">
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-win">↑</span><div><strong>Moat:</strong> Lean, profitable solo operation — no burn, no investors to answer to, no regulatory overhead</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-win">↑</span><div><strong>Advantage:</strong> India's first time-based intraday backtester — strong brand recall in its specific niche, #208 category rank</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-win">↑</span><div><strong>Advantage:</strong> Free backtesting attracts top-of-funnel users at zero CAC — better unit economics per user</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-risk">↓</span><div><strong>Risk:</strong> 1-person team is a ceiling on feature development and support capacity</div></div>
+          <div class="ops-pos-row"><span class="ops-pos-icon ops-pos-risk">↓</span><div><strong>Risk:</strong> As SEBI pushes traders toward live execution, a simulation-only tool risks becoming a stepping stone rather than a destination</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- Growth Analytics -->
