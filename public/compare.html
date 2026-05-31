@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlgoTest vs StockPro — Feature Comparison</title>
+  <title>AlgoTest vs StockMock — Feature Comparison</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -14,7 +14,6 @@
       min-height: 100vh;
     }
 
-    /* ── Header ── */
     header {
       background: #1a1d2e;
       border-bottom: 1px solid #2a2e3f;
@@ -23,12 +22,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    header h1 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.3px;
-    }
+    header h1 { font-size: 20px; font-weight: 700; color: #fff; }
     header .badge {
       font-size: 11px;
       background: #1e3a5f;
@@ -44,36 +38,26 @@
     /* ── Hero ── */
     .hero {
       text-align: center;
-      padding: 56px 32px 40px;
+      padding: 56px 32px 32px;
       max-width: 900px;
       margin: 0 auto;
     }
     .hero h2 {
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 800;
       color: #fff;
       letter-spacing: -0.5px;
       margin-bottom: 14px;
     }
-    .hero h2 span.vs {
-      color: #475569;
-      font-weight: 400;
-      margin: 0 12px;
-    }
-    .hero p {
-      font-size: 16px;
-      color: #6b7280;
-      line-height: 1.6;
-      max-width: 560px;
-      margin: 0 auto;
-    }
+    .hero h2 .vs { color: #374151; font-weight: 400; margin: 0 14px; }
+    .hero p { font-size: 15px; color: #6b7280; line-height: 1.6; max-width: 520px; margin: 0 auto; }
 
-    /* ── Type pills ── */
     .type-row {
       display: flex;
       justify-content: center;
       gap: 16px;
-      margin: 28px 0;
+      margin: 28px 0 0;
+      flex-wrap: wrap;
     }
     .type-pill {
       display: flex;
@@ -85,88 +69,117 @@
       padding: 10px 18px;
       font-size: 13px;
     }
-    .type-pill .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .type-pill .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .dot-at { background: #3b82f6; }
-    .dot-sp { background: #f59e0b; }
+    .dot-sm { background: #a855f7; }
     .type-pill strong { color: #fff; }
     .type-pill span { color: #6b7280; }
 
-    /* ── Verdict banner ── */
+    /* ── Verdict ── */
     .verdict {
       background: #111827;
       border: 1px solid #1f2937;
       border-radius: 12px;
-      padding: 20px 28px;
+      padding: 24px 28px;
       max-width: 860px;
-      margin: 0 auto 48px;
+      margin: 36px auto 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
     .verdict-item { display: flex; gap: 10px; align-items: flex-start; }
-    .verdict-item .icon { font-size: 18px; margin-top: 1px; }
-    .verdict-item p { font-size: 13px; color: #9ca3af; line-height: 1.5; }
+    .verdict-item .icon { font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+    .verdict-item p { font-size: 13px; color: #9ca3af; line-height: 1.55; }
     .verdict-item p strong { color: #e5e7eb; }
 
-    /* ── Main table area ── */
-    .table-wrap {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
+    /* ── Instrument support ── */
+    .instruments {
+      max-width: 860px;
+      margin: 36px auto 0;
+      padding: 0 24px;
     }
-
-    .section-label {
-      font-size: 11px;
+    .instruments h3 {
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       color: #4b5563;
-      padding: 28px 0 10px;
-      border-bottom: 1px solid #1f2937;
-      margin-bottom: 0;
+      margin-bottom: 14px;
+    }
+    .inst-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    .inst-row {
+      display: contents;
+    }
+    .inst-row > div {
+      padding: 11px 16px;
+      border-bottom: 1px solid #1a1d2b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .inst-row:last-child > div { border-bottom: none; }
+    .inst-row.header > div {
+      background: #0d1018;
+      color: #4b5563;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .inst-row.header > div:not(:first-child) { justify-content: center; }
+    .inst-row > div:not(:first-child) { justify-content: center; }
+    .inst-row > div:first-child { color: #9ca3af; }
+    .inst-row > div:nth-child(2) { background: #0a0d16; border-left: 1px solid #1a1d2b; }
+    .inst-row > div:nth-child(3) { background: #0f0a18; border-left: 1px solid #1a1d2b; }
+    .inst-row.header > div:nth-child(2) { color: #60a5fa; }
+    .inst-row.header > div:nth-child(3) { color: #c084fc; }
+    .tick  { color: #34d399; font-size: 17px; }
+    .cross { color: #ef4444; font-size: 17px; }
+    .part  { color: #fbbf24; font-size: 12px; font-weight: 600; }
+
+    /* ── Table ── */
+    .table-wrap {
+      max-width: 980px;
+      margin: 48px auto 0;
+      padding: 0 24px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+    table { width: 100%; border-collapse: collapse; }
 
-    /* Column headers */
     thead th {
       padding: 20px 20px 16px;
       text-align: left;
       border-bottom: 2px solid #1f2937;
     }
     thead th:first-child { width: 36%; color: #4b5563; font-size: 13px; font-weight: 500; }
-    .th-at, .th-sp { width: 32%; }
 
-    .th-card {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .th-name {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-    }
+    .th-card { display: flex; flex-direction: column; gap: 5px; }
+    .th-name { font-size: 19px; font-weight: 800; letter-spacing: -0.3px; }
     .th-at .th-name { color: #60a5fa; }
-    .th-sp .th-name { color: #fbbf24; }
-    .th-type {
-      font-size: 11px;
-      font-weight: 600;
+    .th-sm .th-name { color: #c084fc; }
+    .th-sub { font-size: 11px; color: #4b5563; }
+    .th-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 4px;
     }
-    .th-at .th-type { color: #1d4ed8; background: #1e3a5f; display: inline-block; padding: 2px 8px; border-radius: 4px; }
-    .th-sp .th-type { color: #92400e; background: #451a03; display: inline-block; padding: 2px 8px; border-radius: 4px; }
+    .th-at .th-tag { color: #1d4ed8; background: #1e3a5f; }
+    .th-sm .th-tag { color: #6b21a8; background: #2e1065; }
 
-    /* Row styles */
-    tbody tr {
-      border-bottom: 1px solid #1a1d2b;
-      transition: background 0.15s;
-    }
-    tbody tr:hover { background: #161924; }
+    tbody tr { border-bottom: 1px solid #1a1d2b; transition: background 0.12s; }
+    tbody tr:hover { background: #13161f; }
     tbody tr.section-row td {
       background: #0d1018;
       padding: 10px 20px;
@@ -178,66 +191,28 @@
       border-bottom: 1px solid #1f2937;
     }
 
-    td {
-      padding: 14px 20px;
-      font-size: 14px;
-      vertical-align: middle;
-    }
-    td:first-child {
-      color: #9ca3af;
-      font-weight: 500;
-    }
+    td { padding: 13px 20px; font-size: 13.5px; vertical-align: middle; }
+    td:first-child { color: #9ca3af; font-weight: 500; }
 
-    /* Value cells */
-    .val {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .val-main {
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .val-sub {
-      font-size: 12px;
-      color: #6b7280;
-      line-height: 1.4;
-    }
+    .val { display: flex; flex-direction: column; gap: 3px; }
+    .val-main { font-weight: 600; font-size: 13.5px; color: #d1d5db; }
+    .val-sub { font-size: 11.5px; color: #4b5563; line-height: 1.4; }
 
-    /* Win / partial / loss indicators */
-    .win   .val-main { color: #34d399; }
-    .part  .val-main { color: #fbbf24; }
-    .none  .val-main { color: #4b5563; }
-    .info  .val-main { color: #c9cdd6; }
+    .win .val-main  { color: #34d399; }
+    .none .val-main { color: #374151; }
+    .warn .val-main { color: #fbbf24; }
+    .info .val-main { color: #d1d5db; }
 
-    /* Tick/cross icons */
-    .tick  { color: #34d399; font-size: 18px; line-height: 1; }
-    .cross { color: #ef4444; font-size: 18px; line-height: 1; }
-    .dash  { color: #374151; font-size: 18px; line-height: 1; }
+    .winner-at { background: #08111f !important; }
+    .winner-sm { background: #0f0818 !important; }
 
-    /* Highlight row — who wins */
-    .winner-at { background: #0a1628 !important; }
-    .winner-sp { background: #160f00 !important; }
-
-    /* Bottom note */
-    .footnote {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 24px 48px;
-      font-size: 12px;
-      color: #374151;
-      border-top: 1px solid #1a1d2b;
-      padding-top: 24px;
-    }
-    .footnote a { color: #374151; text-decoration: underline; }
-
-    /* Summary cards */
+    /* ── Summary cards ── */
     .summary-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       max-width: 980px;
-      margin: 0 auto 48px;
+      margin: 48px auto 0;
       padding: 0 24px;
     }
     .summary-card {
@@ -247,49 +222,40 @@
       border-top: 3px solid;
     }
     .summary-card.at { border-color: #3b82f6; }
-    .summary-card.sp { border-color: #f59e0b; }
-    .summary-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
+    .summary-card.sm { border-color: #a855f7; }
+    .summary-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
     .summary-card.at h3 { color: #60a5fa; }
-    .summary-card.sp h3 { color: #fbbf24; }
-    .summary-card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .summary-card.sm h3 { color: #c084fc; }
+    .summary-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .summary-card ul li {
-      display: flex;
-      gap: 8px;
-      font-size: 13px;
-      color: #9ca3af;
-      align-items: flex-start;
+      display: flex; gap: 8px; font-size: 13px;
+      color: #9ca3af; align-items: flex-start;
     }
-    .summary-card ul li::before {
-      content: '→';
-      color: #4b5563;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .summary-card .best-for {
-      margin-top: 18px;
-      padding-top: 14px;
+    .summary-card ul li::before { content: '→'; color: #374151; flex-shrink: 0; }
+    .best-for {
+      margin-top: 16px; padding-top: 14px;
       border-top: 1px solid #1f2937;
-      font-size: 12px;
-      color: #6b7280;
+      font-size: 12px; color: #6b7280;
     }
-    .summary-card .best-for strong { color: #e5e7eb; }
+    .best-for strong { color: #e5e7eb; }
+
+    /* ── Note ── */
+    .footnote {
+      max-width: 980px;
+      margin: 40px auto 60px;
+      padding: 20px 24px 0;
+      border-top: 1px solid #1a1d2b;
+      font-size: 12px;
+      color: #374151;
+    }
+    .footnote a { color: #374151; text-decoration: underline; }
 
     @media (max-width: 640px) {
-      .hero h2 { font-size: 24px; }
+      .hero h2 { font-size: 26px; }
       .verdict { grid-template-columns: 1fr; }
       .summary-grid { grid-template-columns: 1fr; }
       thead th:first-child { display: none; }
       td:first-child { display: none; }
-      table { font-size: 13px; }
     }
   </style>
 </head>
@@ -300,50 +266,101 @@
   <span class="badge">Tool Comparison</span>
 </header>
 
-<!-- Hero -->
 <div class="hero">
-  <h2>
-    AlgoTest
-    <span class="vs">vs</span>
-    StockPro
-  </h2>
-  <p>A feature-by-feature breakdown of two popular Indian trading platforms — one built for automation, one built for education.</p>
-
+  <h2>AlgoTest <span class="vs">vs</span> StockMock</h2>
+  <p>Both are Indian options backtesting platforms — but they diverge sharply once you move past backtesting.</p>
   <div class="type-row">
     <div class="type-pill">
       <div class="dot dot-at"></div>
       <strong>AlgoTest</strong>
-      <span>— Algo Trading Software</span>
+      <span>— Full-cycle algo trading platform</span>
     </div>
     <div class="type-pill">
-      <div class="dot dot-sp"></div>
-      <strong>StockPro Online</strong>
-      <span>— Trading Education Academy</span>
+      <div class="dot dot-sm"></div>
+      <strong>StockMock</strong>
+      <span>— Backtesting &amp; simulation focused</span>
     </div>
   </div>
 </div>
 
-<!-- Quick verdict -->
+<!-- Verdict -->
 <div class="verdict">
   <div class="verdict-item">
     <div class="icon">⚡</div>
-    <p><strong>AlgoTest</strong> is a fully automated algo trading platform. You build, test and deploy strategies — no mentor, no classes, no hand-holding.</p>
+    <p><strong>AlgoTest</strong> takes your strategy the full distance — backtest → paper trade → live auto-execution across 60+ brokers, all in one platform.</p>
   </div>
   <div class="verdict-item">
-    <div class="icon">🎓</div>
-    <p><strong>StockPro</strong> is a structured learning academy. You attend live sessions, get a mentor, and learn to trade manually — no code, no automation.</p>
+    <div class="icon">🔬</div>
+    <p><strong>StockMock</strong> is laser-focused on expiry-based backtesting and simulation. It stops at paper trading — no live execution, no broker integration.</p>
   </div>
   <div class="verdict-item">
     <div class="icon">🎯</div>
-    <p>If your goal is <strong>automated strategies</strong>, AlgoTest wins outright. If your goal is <strong>learning to read the market</strong>, StockPro is more relevant.</p>
+    <p>If you only need to <strong>test and learn strategies</strong>, StockMock is simpler and cheaper. If you want to <strong>actually run them live</strong>, only AlgoTest does that.</p>
   </div>
   <div class="verdict-item">
-    <div class="icon">🔄</div>
-    <p>They serve <strong>different purposes</strong> — you could realistically use both: learn on StockPro, then automate on AlgoTest.</p>
+    <div class="icon">₿</div>
+    <p>For <strong>crypto (BTC/ETH)</strong>, only AlgoTest supports it via Delta Exchange. Neither platform supports Forex (EURUSD) or Gold.</p>
   </div>
 </div>
 
-<!-- Table -->
+<!-- Instrument support -->
+<div class="instruments">
+  <h3 style="margin-top:36px">Instrument Support</h3>
+  <div class="inst-grid">
+    <div class="inst-row header">
+      <div>Instrument</div>
+      <div>AlgoTest</div>
+      <div>StockMock</div>
+    </div>
+    <div class="inst-row">
+      <div>NIFTY Options</div>
+      <div><span class="tick">✓</span></div>
+      <div><span class="tick">✓</span></div>
+    </div>
+    <div class="inst-row">
+      <div>BANKNIFTY Options</div>
+      <div><span class="tick">✓</span></div>
+      <div><span class="tick">✓</span></div>
+    </div>
+    <div class="inst-row">
+      <div>FINNIFTY Options</div>
+      <div><span class="tick">✓</span></div>
+      <div><span class="tick">✓</span></div>
+    </div>
+    <div class="inst-row">
+      <div>MIDCAPNIFTY Options</div>
+      <div><span class="tick">✓</span></div>
+      <div><span class="tick">✓</span></div>
+    </div>
+    <div class="inst-row">
+      <div>SENSEX / BANKEX Options</div>
+      <div><span class="tick">✓</span></div>
+      <div><span class="tick">✓</span></div>
+    </div>
+    <div class="inst-row">
+      <div>500 NSE Stock Options</div>
+      <div><span class="tick">✓</span></div>
+      <div><span class="cross">✗</span></div>
+    </div>
+    <div class="inst-row">
+      <div>BTC / ETH (Crypto)</div>
+      <div><span class="tick">✓</span> <span style="font-size:11px;color:#4b5563">via Delta Exchange</span></div>
+      <div><span class="cross">✗</span></div>
+    </div>
+    <div class="inst-row">
+      <div>Forex (EURUSD, etc.)</div>
+      <div><span class="cross">✗</span></div>
+      <div><span class="cross">✗</span></div>
+    </div>
+    <div class="inst-row">
+      <div>Gold / Commodities</div>
+      <div><span class="cross">✗</span></div>
+      <div><span class="cross">✗</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Feature table -->
 <div class="table-wrap">
   <table>
     <thead>
@@ -352,96 +369,114 @@
         <th class="th-at">
           <div class="th-card">
             <span class="th-name">AlgoTest</span>
-            <span class="th-type">Algo Platform</span>
+            <span class="th-tag">Full Platform</span>
+            <span class="th-sub">algotest.in</span>
           </div>
         </th>
-        <th class="th-sp">
+        <th class="th-sm">
           <div class="th-card">
-            <span class="th-name">StockPro</span>
-            <span class="th-type">Education Academy</span>
+            <span class="th-name">StockMock</span>
+            <span class="th-tag">Backtest Tool</span>
+            <span class="th-sub">stockmock.in</span>
           </div>
         </th>
       </tr>
     </thead>
     <tbody>
 
-      <!-- CORE PRODUCT -->
-      <tr class="section-row"><td colspan="3">Core Product</td></tr>
+      <!-- BACKTESTING -->
+      <tr class="section-row"><td colspan="3">Backtesting</td></tr>
 
       <tr>
-        <td>Primary purpose</td>
+        <td>Historical backtesting</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="val-main">Build &amp; automate trading strategies</span>
-            <span class="val-sub">No-code platform for retail algo traders</span>
+            <span class="val-main">✓ 7.5+ years of data</span>
+            <span class="val-sub">No restriction on years per backtest run</span>
           </div>
         </td>
         <td>
-          <div class="val info">
-            <span class="val-main">Learn to trade manually</span>
-            <span class="val-sub">Structured courses taught by expert mentors</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Product type</td>
-        <td>
-          <div class="val info"><span class="val-main">SaaS software tool</span></div>
-        </td>
-        <td>
-          <div class="val info"><span class="val-main">Online education academy</span></div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Market focus</td>
-        <td>
-          <div class="val info">
-            <span class="val-main">NSE Options — Index &amp; Stocks</span>
-            <span class="val-sub">NIFTY, BANKNIFTY, FINNIFTY, MIDCAPNIFTY, SENSEX, BANKEX + 50 NIFTY50 stocks</span>
-          </div>
-        </td>
-        <td>
-          <div class="val info">
-            <span class="val-main">Stocks, F&amp;O, Index Options</span>
-            <span class="val-sub">Intraday, swing, positional, and investment</span>
+          <div class="val win">
+            <span class="val-main">✓ Multi-year data</span>
+            <span class="val-sub">High-speed, expiry-cycle focused (weekly &amp; monthly)</span>
           </div>
         </td>
       </tr>
 
       <tr>
-        <td>Target user</td>
+        <td>Free backtests</td>
         <td>
           <div class="val info">
-            <span class="val-main">Systematic / algo traders</span>
-            <span class="val-sub">Traders who want to automate rule-based strategies</span>
+            <span class="val-main">25 free per week</span>
+            <span class="val-sub">Credit-based model beyond that</span>
           </div>
         </td>
-        <td>
-          <div class="val info">
-            <span class="val-main">Beginner to intermediate traders</span>
-            <span class="val-sub">People wanting to learn technical trading from scratch</span>
+        <td class="winner-sm">
+          <div class="val win">
+            <span class="val-main">Free (unlimited backtest)</span>
+            <span class="val-sub">Backtesting is free; simulator/builder costs ₹250/month</span>
           </div>
         </td>
       </tr>
 
       <tr>
-        <td>Founded</td>
-        <td><div class="val info"><span class="val-main">~2020</span></div></td>
-        <td><div class="val info"><span class="val-main">2016</span></div></td>
+        <td>Expiry-cycle backtesting</td>
+        <td>
+          <div class="val info">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Supported across all expiry types</span>
+          </div>
+        </td>
+        <td class="winner-sm">
+          <div class="val win">
+            <span class="val-main">✓ Core strength</span>
+            <span class="val-sub">Built specifically around expiry-based strategies (India's first)</span>
+          </div>
+        </td>
       </tr>
 
       <tr>
-        <td>Community size</td>
-        <td>
-          <div class="val info">
-            <span class="val-main">14,000+ on Telegram</span>
+        <td>Side-by-side strategy comparison</td>
+        <td class="winner-at">
+          <div class="val win">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Run multiple backtests and compare results together</span>
           </div>
         </td>
         <td>
-          <div class="val info">
-            <span class="val-main">10,000+ members</span>
+          <div class="val none">
+            <span class="val-main">✗</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Slippage / brokerage simulation</td>
+        <td class="winner-at">
+          <div class="val win">
+            <span class="val-main">✓</span>
+          </div>
+        </td>
+        <td class="winner-sm">
+          <div class="val win">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Simulates slippage, brokerage fees &amp; taxes</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Performance report</td>
+        <td class="winner-at">
+          <div class="val win">
+            <span class="val-main">✓ Detailed</span>
+            <span class="val-sub">Success rate, max drawdown, P&amp;L curve, Greeks, trade log</span>
+          </div>
+        </td>
+        <td>
+          <div class="val win">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Max drawdown, success rate, detailed performance reports</span>
           </div>
         </td>
       </tr>
@@ -453,45 +488,72 @@
         <td>No-code strategy builder</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Visual drag-and-drop builder for multi-leg options strategies</span>
+            <span class="val-main">✓ Advanced</span>
+            <span class="val-sub">Full drag-and-drop; Signal AI for indicator-based strategies</span>
           </div>
         </td>
         <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">No strategy-building tool — manual trading only</span>
+          <div class="val win">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Visual builder for options strategies (paid plan)</span>
           </div>
         </td>
       </tr>
 
       <tr>
-        <td>Multi-leg options support</td>
+        <td>Multi-leg options</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Straddles, strangles, iron condors, spreads, custom legs</span>
+            <span class="val-main">✓</span>
+            <span class="val-sub">Straddles, strangles, condors, spreads, custom structures</span>
           </div>
         </td>
         <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">Covered in courses as education, not as a tool</span>
+          <div class="val win">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Straddles, strangles, iron condors, bull/bear spreads</span>
           </div>
         </td>
       </tr>
 
       <tr>
-        <td>Signal / indicator strategies</td>
+        <td>Leg-wise stop loss</td>
+        <td class="winner-at">
+          <div class="val win"><span class="val-main">✓</span></div>
+        </td>
+        <td>
+          <div class="val win">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Leg-wise SL + Profit Lock — a StockMock specialty</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Day-of-week entry conditions</td>
+        <td class="winner-at">
+          <div class="val win"><span class="val-main">✓</span></div>
+        </td>
+        <td>
+          <div class="val warn">
+            <span class="val-main">Paid only</span>
+            <span class="val-sub">e.g. enter on Tuesday, exit on Thursday</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Indicator / Signal-based strategies</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Signal AI — build indicator-based strategies with no coding</span>
+            <span class="val-main">✓ Signal AI</span>
+            <span class="val-sub">Build strategies triggered by technical indicators, no coding</span>
           </div>
         </td>
         <td>
           <div class="val none">
-            <span class="cross">✗</span>
+            <span class="val-main">✗</span>
+            <span class="val-sub">Time-based and price-based rules only; no indicator triggers</span>
           </div>
         </td>
       </tr>
@@ -500,62 +562,33 @@
         <td>Payoff graph &amp; analytics</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Payoff graph, max profit/loss, risk:reward, breakeven point</span>
+            <span class="val-main">✓</span>
+            <span class="val-sub">Payoff curve, max profit/loss, risk:reward, breakeven</span>
           </div>
         </td>
         <td>
-          <div class="val none">
-            <span class="cross">✗</span>
+          <div class="val win">
+            <span class="val-main">✓ Charts included</span>
+            <span class="val-sub">In paid plan (₹250/month)</span>
           </div>
         </td>
       </tr>
 
-      <!-- BACKTESTING -->
-      <tr class="section-row"><td colspan="3">Backtesting</td></tr>
+      <!-- ADVANCED ANALYTICS -->
+      <tr class="section-row"><td colspan="3">Advanced Analytics</td></tr>
 
       <tr>
-        <td>Historical backtesting</td>
+        <td>Options Greeks (Delta, Theta, Gamma, Vega)</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Up to 7.5+ years of historical data, no restriction on years per backtest</span>
+            <span class="val-main">✓ Live in strategy builder</span>
+            <span class="val-sub">Delta, Theta, Gamma, Vega, Rho, IV — real-time</span>
           </div>
         </td>
         <td>
           <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">No backtesting tool — concepts taught manually in sessions</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Free backtests</td>
-        <td class="winner-at">
-          <div class="val win">
-            <span class="val-main">25 free per week</span>
-            <span class="val-sub">Credit-based model for more</span>
-          </div>
-        </td>
-        <td>
-          <div class="val none">
-            <span class="dash">—</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Side-by-side strategy comparison</td>
-        <td class="winner-at">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Run multiple backtests and compare results together</span>
-          </div>
-        </td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
+            <span class="val-main">✗</span>
+            <span class="val-sub">Not available</span>
           </div>
         </td>
       </tr>
@@ -564,14 +597,12 @@
         <td>Monte Carlo analysis</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
+            <span class="val-main">✓</span>
             <span class="val-sub">10,000 simulated price paths to stress-test strategies</span>
           </div>
         </td>
         <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-          </div>
+          <div class="val none"><span class="val-main">✗</span></div>
         </td>
       </tr>
 
@@ -579,14 +610,24 @@
         <td>Scenario analysis</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Simulate price up/down, time decay, volatility changes on P&amp;L</span>
+            <span class="val-main">✓</span>
+            <span class="val-sub">Simulate price moves, IV changes, time decay on P&amp;L</span>
           </div>
         </td>
         <td>
-          <div class="val none">
-            <span class="cross">✗</span>
+          <div class="val none"><span class="val-main">✗</span></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Margin calculator</td>
+        <td class="winner-at">
+          <div class="val win">
+            <span class="val-main">✓ Built-in</span>
           </div>
+        </td>
+        <td>
+          <div class="val none"><span class="val-main">✗</span></div>
         </td>
       </tr>
 
@@ -594,17 +635,17 @@
       <tr class="section-row"><td colspan="3">Paper &amp; Live Trading</td></tr>
 
       <tr>
-        <td>Paper trading (forward test)</td>
+        <td>Paper trading / forward test</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Run strategies in live market conditions with virtual capital</span>
+            <span class="val-main">✓</span>
+            <span class="val-sub">Run strategies against live market data with virtual capital</span>
           </div>
         </td>
         <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">No paper trading tool</span>
+          <div class="val win">
+            <span class="val-main">✓ Simulator</span>
+            <span class="val-sub">Live market simulation with real-time data (paid plan)</span>
           </div>
         </td>
       </tr>
@@ -613,14 +654,14 @@
         <td>Live automated trading</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Full auto-execution — strategies run without manual intervention</span>
+            <span class="val-main">✓ Full auto-execution</span>
+            <span class="val-sub">Strategies run automatically without any manual steps</span>
           </div>
         </td>
         <td>
           <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">Teaches manual execution; no automation tool</span>
+            <span class="val-main">✗ Not supported</span>
+            <span class="val-sub">StockMock stops at simulation — no live trade execution</span>
           </div>
         </td>
       </tr>
@@ -630,286 +671,157 @@
         <td class="winner-at">
           <div class="val win">
             <span class="val-main">60+ brokers</span>
-            <span class="val-sub">Zerodha, Upstox, Angel, Fyers, ICICI, HDFC and many more</span>
+            <span class="val-sub">Zerodha, Upstox, Angel One, Fyers, ICICI Direct, HDFC Sky, and more</span>
           </div>
         </td>
         <td>
           <div class="val none">
-            <span class="dash">—</span>
-            <span class="val-sub">No broker integration</span>
+            <span class="val-main">✗ None</span>
+            <span class="val-sub">No broker API connection</span>
           </div>
         </td>
       </tr>
 
       <tr>
-        <td>Order management</td>
+        <td>Real-time alerts</td>
+        <td class="winner-at">
+          <div class="val win"><span class="val-main">✓</span></div>
+        </td>
+        <td>
+          <div class="val none">
+            <span class="val-main">✗</span>
+            <span class="val-sub">No real-time alerts</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Crypto trading (BTC / ETH)</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Limit/market orders, order slicing, auto square-off, position management</span>
+            <span class="val-main">✓ via Delta Exchange</span>
+            <span class="val-sub">Backtest, forward test &amp; live trade BTCUSD &amp; ETHUSD options/futures</span>
           </div>
         </td>
         <td>
           <div class="val none">
-            <span class="cross">✗</span>
+            <span class="val-main">✗</span>
+            <span class="val-sub">NSE instruments only</span>
           </div>
         </td>
       </tr>
 
-      <!-- RISK MANAGEMENT -->
-      <tr class="section-row"><td colspan="3">Risk Management</td></tr>
+      <!-- EASE OF USE -->
+      <tr class="section-row"><td colspan="3">Ease of Use</td></tr>
 
       <tr>
-        <td>Stop-loss controls</td>
+        <td>Learning curve</td>
+        <td>
+          <div class="val warn">
+            <span class="val-main">Moderate</span>
+            <span class="val-sub">Feature-rich; takes time to explore all capabilities</span>
+          </div>
+        </td>
+        <td class="winner-sm">
+          <div class="val win">
+            <span class="val-main">Low — beginner-friendly</span>
+            <span class="val-sub">Clean UI, focused scope, easy to get started</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Suitable for beginners</td>
+        <td>
+          <div class="val warn">
+            <span class="val-main">Partial</span>
+            <span class="val-sub">Good docs and community, but broader scope can overwhelm</span>
+          </div>
+        </td>
+        <td class="winner-sm">
+          <div class="val win">
+            <span class="val-main">Yes — ideal starting point</span>
+            <span class="val-sub">Great for learning expiry-based options strategies</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Desktop app</td>
+        <td>
+          <div class="val none"><span class="val-main">✗ Web only</span></div>
+        </td>
+        <td class="winner-sm">
+          <div class="val win">
+            <span class="val-main">✓</span>
+            <span class="val-sub">Desktop app available (Windows &amp; Mac)</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- PRICING -->
+      <tr class="section-row"><td colspan="3">Access &amp; Pricing</td></tr>
+
+      <tr>
+        <td>Free tier</td>
+        <td>
+          <div class="val info">
+            <span class="val-main">25 free backtests / week</span>
+          </div>
+        </td>
+        <td class="winner-sm">
+          <div class="val win">
+            <span class="val-main">Backtesting fully free</span>
+            <span class="val-sub">Simulator + builder + charts = ₹250/month</span>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Paid model</td>
+        <td>
+          <div class="val info">
+            <span class="val-main">Credit-based</span>
+            <span class="val-sub">Buy credits as needed; unlimited 7-day or 30-day plans available</span>
+          </div>
+        </td>
+        <td>
+          <div class="val info">
+            <span class="val-main">₹250–₹349/month</span>
+            <span class="val-sub">Flat monthly subscription</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- COMMUNITY -->
+      <tr class="section-row"><td colspan="3">Community &amp; Compliance</td></tr>
+
+      <tr>
+        <td>Community</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Fixed SL, % trailing stop-loss, time-based exits</span>
+            <span class="val-main">14,000+ on Telegram</span>
           </div>
         </td>
         <td>
-          <div class="val part">
-            <span class="val-main">Taught in courses</span>
-            <span class="val-sub">Manual SL concepts covered — no automated enforcement</span>
+          <div class="val info">
+            <span class="val-main">Active Telegram + X community</span>
           </div>
         </td>
       </tr>
-
-      <tr>
-        <td>Margin calculator</td>
-        <td class="winner-at">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Built-in margin estimator for NSE options contracts</span>
-          </div>
-        </td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-          </div>
-        </td>
-      </tr>
-
-      <!-- OPTIONS ANALYTICS -->
-      <tr class="section-row"><td colspan="3">Options Analytics</td></tr>
-
-      <tr>
-        <td>Greeks analysis</td>
-        <td class="winner-at">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Live Delta, Theta, Gamma, IV, Vega, Rho displayed per strategy</span>
-          </div>
-        </td>
-        <td>
-          <div class="val part">
-            <span class="val-main">Covered in Index Pro / Pure Index courses</span>
-            <span class="val-sub">Taught conceptually, not as a live tool</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Implied Volatility (IV)</td>
-        <td class="winner-at">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">IV visible in strategy builder and backtests</span>
-          </div>
-        </td>
-        <td>
-          <div class="val part">
-            <span class="val-main">Discussed in courses</span>
-          </div>
-        </td>
-      </tr>
-
-      <!-- EDUCATION & LEARNING -->
-      <tr class="section-row"><td colspan="3">Education &amp; Learning</td></tr>
-
-      <tr>
-        <td>Structured courses</td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">No formal courses — documentation and community only</span>
-          </div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Master Trader, Equity Titans, Pure Index, Index Pro, Market Profile, Youth course</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Live trading sessions</td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-          </div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">20+ live trading sessions with StockPro mentors included</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>1:1 / group mentorship</td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-          </div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">3–4 months live mentorship post-course, monthly doubt-clearing sessions for 1 year</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Recorded classes</td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">Blog posts and docs available</span>
-          </div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">20+ hours of recorded sessions, access for 1 year</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Certificate</td>
-        <td>
-          <div class="val none"><span class="cross">✗</span></div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Official StockPro certificate upon course completion</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>ISO certified</td>
-        <td>
-          <div class="val none"><span class="cross">✗</span></div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">ISO certified for stock market education</span>
-          </div>
-        </td>
-      </tr>
-
-      <!-- TOOLS & SCANNERS -->
-      <tr class="section-row"><td colspan="3">Tools &amp; Scanners</td></tr>
-
-      <tr>
-        <td>Stock / breakout scanners</td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-            <span class="val-sub">No scanner tool — options index focused only</span>
-          </div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Free customised scanners to identify potential breakout stocks in one click</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Live charting</td>
-        <td>
-          <div class="val part">
-            <span class="val-main">Basic charts in strategy builder</span>
-          </div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Advanced live charting tools for members</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Simulator / trade replay</td>
-        <td class="winner-at">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Full strategy simulator and trade replay</span>
-          </div>
-        </td>
-        <td>
-          <div class="val none">
-            <span class="cross">✗</span>
-          </div>
-        </td>
-      </tr>
-
-      <!-- COMPLIANCE & PLATFORM -->
-      <tr class="section-row"><td colspan="3">Compliance &amp; Platform</td></tr>
 
       <tr>
         <td>SEBI compliant</td>
         <td class="winner-at">
           <div class="val win">
-            <span class="tick">✓</span>
+            <span class="val-main">✓</span>
             <span class="val-sub">Compliant with SEBI's 2025 retail algo trading framework</span>
           </div>
         </td>
         <td>
           <div class="val info">
             <span class="val-main">N/A</span>
-            <span class="val-sub">Education platform — SEBI regulations don't apply</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Private discussion forum</td>
-        <td>
-          <div class="val info">
-            <span class="val-main">Telegram community (14k+)</span>
-          </div>
-        </td>
-        <td class="winner-sp">
-          <div class="val win">
-            <span class="tick">✓</span>
-            <span class="val-sub">Private member forums + Telegram group</span>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Access type</td>
-        <td>
-          <div class="val info">
-            <span class="val-main">Credit-based subscription</span>
-            <span class="val-sub">25 free backtests/week, credits for more</span>
-          </div>
-        </td>
-        <td>
-          <div class="val info">
-            <span class="val-main">One-time course purchase</span>
-            <span class="val-sub">Lifelong access on some courses; 1-year on others</span>
+            <span class="val-sub">Simulation-only — SEBI algo rules don't apply</span>
           </div>
         </td>
       </tr>
@@ -923,34 +835,34 @@
   <div class="summary-card at">
     <h3>AlgoTest — Choose if you want to…</h3>
     <ul>
-      <li>Build rule-based options strategies without writing code</li>
-      <li>Backtest against 7.5+ years of NSE historical data</li>
-      <li>Run Monte Carlo and scenario stress tests on your strategy</li>
-      <li>Paper-trade before going live with real money</li>
-      <li>Deploy fully automated trading across 60+ Indian brokers</li>
-      <li>Analyse Greeks, payoff curves, and IV in real time</li>
-      <li>Already know how to trade and want to systemise it</li>
+      <li>Go from backtest all the way to live automated trading in one tool</li>
+      <li>Connect to your broker and auto-execute without lifting a finger</li>
+      <li>Build indicator-triggered strategies using Signal AI</li>
+      <li>Analyse Greeks, run Monte Carlo tests, and stress-test your edge</li>
+      <li>Trade 500 NSE stock options, not just index options</li>
+      <li>Backtest or live-trade BTC / ETH crypto strategies</li>
+      <li>Run side-by-side comparisons of multiple strategies</li>
     </ul>
-    <div class="best-for"><strong>Best for:</strong> Systematic traders, quants, and experienced options traders who want to automate strategies.</div>
+    <div class="best-for"><strong>Best for:</strong> Traders ready to automate — who need the full pipeline from idea to live execution.</div>
   </div>
 
-  <div class="summary-card sp">
-    <h3>StockPro — Choose if you want to…</h3>
+  <div class="summary-card sm">
+    <h3>StockMock — Choose if you want to…</h3>
     <ul>
-      <li>Learn the fundamentals of technical and options trading from scratch</li>
-      <li>Get live mentorship and guidance from experienced traders</li>
-      <li>Attend structured live trading sessions (20+)</li>
-      <li>Find breakout stocks using ready-made proprietary scanners</li>
-      <li>Earn a certified qualification in stock market trading</li>
-      <li>Learn intraday, swing, positional, and index options trading</li>
-      <li>Become part of a guided cohort with ongoing doubt support</li>
+      <li>Test expiry-based options strategies with zero cost</li>
+      <li>Learn how straddles, strangles, iron condors perform historically</li>
+      <li>Simulate strategies in a live market environment before risking money</li>
+      <li>Use leg-wise stop-loss and profit lock features</li>
+      <li>Have a simple, focused tool with a flat low monthly fee</li>
+      <li>Work on a desktop app (Windows / Mac)</li>
+      <li>Get started quickly without a steep learning curve</li>
     </ul>
-    <div class="best-for"><strong>Best for:</strong> Beginners and intermediate traders who want structured education and mentored live trading experience.</div>
+    <div class="best-for"><strong>Best for:</strong> Beginners and learners who want to test expiry strategies and understand options before going live.</div>
   </div>
 </div>
 
 <div class="footnote">
-  Data sourced from public information on <a href="https://algotest.in" target="_blank">algotest.in</a> and <a href="https://stockproonline.com" target="_blank">stockproonline.com</a>. Features may change — verify directly with each platform before purchasing.
+  Data sourced from public information on <a href="https://algotest.in" target="_blank">algotest.in</a>, <a href="https://docs.algotest.in" target="_blank">docs.algotest.in</a>, and <a href="https://stockmock.in" target="_blank">stockmock.in</a>. Features may change — verify directly with each platform before purchasing.
 </div>
 
 </body>
