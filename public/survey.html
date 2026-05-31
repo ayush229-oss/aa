@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trader Survey — Help Us Build the Right Tool</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #c9cdd6;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* ── Header ── */
+    .top-bar {
+      background: #1a1d2e;
+      border-bottom: 1px solid #2a2e3f;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-bar .brand { font-size: 18px; font-weight: 700; color: #fff; }
+    .top-bar .sep { color: #374151; }
+    .top-bar .page-title { font-size: 14px; color: #6b7280; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #0d1420 0%, #111827 100%);
+      border-bottom: 1px solid #1f2937;
+      padding: 48px 28px 40px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: #1e3a5f;
+      color: #60a5fa;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      border: 1px solid #2563eb33;
+    }
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.25;
+    }
+    .hero p {
+      font-size: 15px;
+      color: #6b7280;
+      max-width: 520px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .n { font-size: 22px; font-weight: 800; color: #60a5fa; }
+    .hero-stat .l { font-size: 12px; color: #4b5563; margin-top: 2px; }
+
+    /* ── Form layout ── */
+    .form-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 24px 0;
+    }
+
+    /* Section divider */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 40px 0 24px;
+    }
+    .section-header:first-of-type { margin-top: 0; }
+    .section-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1e3a5f;
+      color: #60a5fa;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title { font-size: 14px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    /* Question card */
+    .q-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+      transition: border-color 0.15s;
+    }
+    .q-card:focus-within { border-color: #2563eb; }
+
+    .q-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+      line-height: 1.45;
+    }
+    .q-required { color: #ef4444; margin-left: 3px; }
+    .q-hint { font-size: 12px; color: #4b5563; margin-bottom: 14px; margin-top: 3px; }
+
+    /* Radio & Checkbox options */
+    .options { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .opt:hover { background: #1a1d2e; border-color: #2a2e3f; }
+    .opt input[type="radio"],
+    .opt input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #3b82f6;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .opt-label { font-size: 13.5px; color: #9ca3af; line-height: 1.4; }
+    .opt:has(input:checked) {
+      background: #0a1628;
+      border-color: #1e3a5f;
+    }
+    .opt:has(input:checked) .opt-label { color: #e5e7eb; }
+
+    /* Scale */
+    .scale-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .scale-label-text { font-size: 11px; color: #4b5563; min-width: 100px; }
+    .scale-label-text.right { text-align: right; }
+    .scale-btns { display: flex; gap: 8px; }
+    .scale-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 1px solid #2a2e3f;
+      background: #1a1d2e;
+      color: #6b7280;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .scale-btn:hover { border-color: #3b82f6; color: #fff; }
+    .scale-btn.selected { background: #1e3a5f; border-color: #3b82f6; color: #60a5fa; }
+
+    /* Text input */
+    .q-input {
+      width: 100%;
+      background: #1a1d2e;
+      border: 1px solid #2a2e3f;
+      color: #e5e7eb;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      margin-top: 10px;
+      resize: vertical;
+      min-height: 44px;
+    }
+    .q-input:focus { outline: none; border-color: #3b82f6; }
+    .q-input::placeholder { color: #374151; }
+
+    /* Submit */
+    .submit-wrap {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .submit-btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+      letter-spacing: 0.2px;
+    }
+    .submit-btn:hover { background: #1d4ed8; }
+    .submit-btn:disabled { background: #1e3a5f; cursor: not-allowed; color: #4b5563; }
+    .submit-note { font-size: 12px; color: #374151; margin-top: 12px; }
+
+    /* Thank you state */
+    .thankyou {
+      display: none;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .thankyou .ty-icon { font-size: 48px; margin-bottom: 20px; }
+    .thankyou h2 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .thankyou p { font-size: 15px; color: #6b7280; max-width: 440px; margin: 0 auto 24px; line-height: 1.6; }
+    .thankyou .share-note {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 18px 24px;
+      max-width: 460px;
+      margin: 0 auto;
+      font-size: 13px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+    .thankyou .share-note strong { color: #e5e7eb; }
+
+    /* Progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      transition: width 0.3s ease;
+      z-index: 100;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 22px; }
+      .scale-row { flex-direction: column; align-items: flex-start; }
+      .scale-btn { width: 38px; height: 38px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress" style="width:0%"></div>
+
+<div class="top-bar">
+  <span class="brand">EdgeKit</span>
+  <span class="sep">·</span>
+  <span class="page-title">Trader Research Survey</span>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">We're building this for you</div>
+  <h1>Help us build the trading platform Indian forex traders actually need</h1>
+  <p>Takes 3–4 minutes. No selling. Your answers directly shape what we build. We'll share findings back with everyone who responds.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="n">3 min</div><div class="l">to complete</div></div>
+    <div class="hero-stat"><div class="n">100%</div><div class="l">anonymous</div></div>
+    <div class="hero-stat"><div class="n">16</div><div class="l">questions</div></div>
+  </div>
+</div>
+
+<div class="form-wrap" id="form-section">
+  <form id="survey-form" novalidate>
+
+    <!-- SECTION 1: About You -->
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">About You</div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">How long have you been trading forex? <span class="q-required">*</span></label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="experience" value="lt6m" required /><span class="opt-label">Less than 6 months — still learning</span></label>
+        <label class="opt"><input type="radio" name="experience" value="6m1y" /><span class="opt-label">6 months – 1 year</span></label>
+        <label class="opt"><input type="radio" name="experience" value="1y3y" /><span class="opt-label">1–3 years</span></label>
+        <label class="opt"><input type="radio" name="experience" value="3y5y" /><span class="opt-label">3–5 years</span></label>
+        <label class="opt"><input type="radio" name="experience" value="5y+" /><span class="opt-label">5+ years</span></label>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">What is your primary trading style? <span class="q-required">*</span></label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="style" value="scalping" required /><span class="opt-label">Scalping — seconds to minutes per trade</span></label>
+        <label class="opt"><input type="radio" name="style" value="daytrading" /><span class="opt-label">Day trading — all positions closed by end of day</span></label>
+        <label class="opt"><input type="radio" name="style" value="swing" /><span class="opt-label">Swing trading — holding days to weeks</span></label>
+        <label class="opt"><input type="radio" name="style" value="position" /><span class="opt-label">Position trading — weeks to months</span></label>
+        <label class="opt"><input type="radio" name="style" value="nostyle" /><span class="opt-label">I don't have a consistent style yet</span></label>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">Which instruments do you trade or want to trade? <span class="q-required">*</span></label>
+      <div class="q-hint">Select all that apply</div>
+      <div class="options">
+        <label class="opt"><input type="checkbox" name="instruments" value="eurusd" /><span class="opt-label">EURUSD</span></label>
+        <label class="opt"><input type="checkbox" name="instruments" value="gold" /><span class="opt-label">Gold (XAUUSD)</span></label>
+        <label class="opt"><input type="checkbox" name="instruments" value="gbpusd" /><span class="opt-label">GBPUSD</span></label>
+        <label class="opt"><input type="checkbox" name="instruments" value="usdjpy" /><span class="opt-label">USDJPY</span></label>
+        <label class="opt"><input type="checkbox" name="instruments" value="crypto" /><span class="opt-label">Crypto (BTC, ETH)</span></label>
+        <label class="opt"><input type="checkbox" name="instruments" value="indices" /><span class="opt-label">Indices (US30, NAS100, SPX500)</span></label>
+        <label class="opt"><input type="checkbox" name="instruments" value="inr_pairs" /><span class="opt-label">INR pairs on NSE/BSE (USDINR, EURINR)</span></label>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Prop Firm Journey -->
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Prop Firm Journey</div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">Where are you in your prop firm journey? <span class="q-required">*</span></label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="prop_status" value="funded" required /><span class="opt-label">I am currently funded and trading with prop firm capital</span></label>
+        <label class="opt"><input type="radio" name="prop_status" value="attempting" /><span class="opt-label">I am currently attempting a challenge</span></label>
+        <label class="opt"><input type="radio" name="prop_status" value="planning" /><span class="opt-label">I plan to attempt a challenge in the next 6 months</span></label>
+        <label class="opt"><input type="radio" name="prop_status" value="failed" /><span class="opt-label">I have tried and failed one or more challenges</span></label>
+        <label class="opt"><input type="radio" name="prop_status" value="curious" /><span class="opt-label">I'm curious but haven't decided yet</span></label>
+        <label class="opt"><input type="radio" name="prop_status" value="not_interested" /><span class="opt-label">Not interested in prop firms</span></label>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">What is the hardest part of passing a prop firm challenge?</label>
+      <div class="q-hint">Select all that apply</div>
+      <div class="options">
+        <label class="opt"><input type="checkbox" name="prop_hard" value="daily_dd" /><span class="opt-label">Managing the daily drawdown limit (e.g. 5% per day)</span></label>
+        <label class="opt"><input type="checkbox" name="prop_hard" value="max_dd" /><span class="opt-label">Managing the maximum drawdown limit (e.g. 10% total)</span></label>
+        <label class="opt"><input type="checkbox" name="prop_hard" value="profit_target" /><span class="opt-label">Consistently hitting the profit target</span></label>
+        <label class="opt"><input type="checkbox" name="prop_hard" value="psychology" /><span class="opt-label">Psychological pressure — knowing real rules are on the line</span></label>
+        <label class="opt"><input type="checkbox" name="prop_hard" value="not_tested" /><span class="opt-label">Not knowing if my strategy actually works before I pay the fee</span></label>
+        <label class="opt"><input type="checkbox" name="prop_hard" value="no_rules" /><span class="opt-label">I don't have a written, defined strategy to begin with</span></label>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Current Workflow -->
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Your Current Workflow</div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">How do you currently test a strategy before trading it live? <span class="q-required">*</span></label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="test_method" value="none" required /><span class="opt-label">I don't test — I go straight to live or challenge accounts</span></label>
+        <label class="opt"><input type="radio" name="test_method" value="eyeball" /><span class="opt-label">I manually look at charts and check entries visually</span></label>
+        <label class="opt"><input type="radio" name="test_method" value="mt_backtest" /><span class="opt-label">I use MetaTrader's built-in strategy tester</span></label>
+        <label class="opt"><input type="radio" name="test_method" value="tv_pine" /><span class="opt-label">I use TradingView Pine Script backtesting</span></label>
+        <label class="opt"><input type="radio" name="test_method" value="paper" /><span class="opt-label">I paper trade for a while and observe</span></label>
+        <label class="opt"><input type="radio" name="test_method" value="dedicated" /><span class="opt-label">I use a dedicated backtesting tool (Forex Tester, etc.)</span></label>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">How realistic is your current testing vs actual trading conditions?</label>
+      <div class="q-hint">1 = Not realistic at all &nbsp;·&nbsp; 5 = Very close to real</div>
+      <div class="scale-row">
+        <span class="scale-label-text">Not realistic</span>
+        <div class="scale-btns" id="scale-realistic">
+          <button type="button" class="scale-btn" data-val="1" onclick="setScale('realistic',1)">1</button>
+          <button type="button" class="scale-btn" data-val="2" onclick="setScale('realistic',2)">2</button>
+          <button type="button" class="scale-btn" data-val="3" onclick="setScale('realistic',3)">3</button>
+          <button type="button" class="scale-btn" data-val="4" onclick="setScale('realistic',4)">4</button>
+          <button type="button" class="scale-btn" data-val="5" onclick="setScale('realistic',5)">5</button>
+        </div>
+        <span class="scale-label-text right">Very realistic</span>
+      </div>
+      <input type="hidden" name="realistic_score" id="realistic_val" value="" />
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">What are your biggest frustrations when testing strategies? <span class="q-required">*</span></label>
+      <div class="q-hint">Select all that apply</div>
+      <div class="options">
+        <label class="opt"><input type="checkbox" name="frustrations" value="coding" /><span class="opt-label">I need coding skills I don't have (Pine Script, MQL5, Python)</span></label>
+        <label class="opt"><input type="checkbox" name="frustrations" value="spreads" /><span class="opt-label">Can't test with realistic spreads, slippage, and commissions</span></label>
+        <label class="opt"><input type="checkbox" name="frustrations" value="no_prop_rules" /><span class="opt-label">Can't simulate prop firm rules (drawdown caps, profit targets)</span></label>
+        <label class="opt"><input type="checkbox" name="frustrations" value="too_complex" /><span class="opt-label">Existing tools are too complex or overwhelming</span></label>
+        <label class="opt"><input type="checkbox" name="frustrations" value="lucky_results" /><span class="opt-label">Can't tell if a strategy is genuinely good or just got lucky on past data</span></label>
+        <label class="opt"><input type="checkbox" name="frustrations" value="data_cost" /><span class="opt-label">Historical forex data is expensive or hard to get</span></label>
+        <label class="opt"><input type="checkbox" name="frustrations" value="no_workflow" /><span class="opt-label">There's no clear workflow from strategy idea → live trading</span></label>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">What % of your trades follow a written, defined strategy? <span class="q-required">*</span></label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="systematic_pct" value="0" required /><span class="opt-label">0% — I trade mostly on feel, gut, and intuition</span></label>
+        <label class="opt"><input type="radio" name="systematic_pct" value="1-25" /><span class="opt-label">1–25% — Mostly intuition with a few loose rules</span></label>
+        <label class="opt"><input type="radio" name="systematic_pct" value="26-50" /><span class="opt-label">26–50% — A mix of both</span></label>
+        <label class="opt"><input type="radio" name="systematic_pct" value="51-75" /><span class="opt-label">51–75% — Mostly rules-based with some discretion</span></label>
+        <label class="opt"><input type="radio" name="systematic_pct" value="76-100" /><span class="opt-label">76–100% — Strictly systematic, I follow rules every time</span></label>
+      </div>
+    </div>
+
+    <!-- SECTION 4: The Solution -->
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">The Platform We're Building</div>
+    </div>
+
+    <div class="q-card" style="border-color:#1e3a5f; background:#0a1628;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#3b82f6;margin-bottom:12px;">The idea</div>
+      <p style="font-size:14px;color:#9ca3af;line-height:1.65;">A no-code platform where you build a forex strategy visually, backtest it on 10+ years of EURUSD/Gold/major pair data with realistic spreads and slippage, then simulate it under <strong style="color:#e5e7eb;">exact prop firm challenge rules</strong> (FTMO Phase 1: 5% daily DD, 10% max DD, 8% profit target) — so you know if your strategy would pass <em>before</em> you pay the challenge fee.</p>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">How useful would this platform be for you? <span class="q-required">*</span></label>
+      <div class="q-hint">1 = Not useful at all &nbsp;·&nbsp; 5 = Extremely useful, I need this now</div>
+      <div class="scale-row">
+        <span class="scale-label-text">Not useful</span>
+        <div class="scale-btns" id="scale-useful">
+          <button type="button" class="scale-btn" data-val="1" onclick="setScale('useful',1)">1</button>
+          <button type="button" class="scale-btn" data-val="2" onclick="setScale('useful',2)">2</button>
+          <button type="button" class="scale-btn" data-val="3" onclick="setScale('useful',3)">3</button>
+          <button type="button" class="scale-btn" data-val="4" onclick="setScale('useful',4)">4</button>
+          <button type="button" class="scale-btn" data-val="5" onclick="setScale('useful',5)">5</button>
+        </div>
+        <span class="scale-label-text right">Need this now</span>
+      </div>
+      <input type="hidden" name="useful_score" id="useful_val" value="" />
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">Which feature matters most to you? <span class="q-required">*</span></label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="top_feature" value="no_code" required /><span class="opt-label">Visual, no-code strategy builder — no Python or Pine Script</span></label>
+        <label class="opt"><input type="radio" name="top_feature" value="realistic" /><span class="opt-label">Realistic backtesting — actual spreads, slippage, and commissions</span></label>
+        <label class="opt"><input type="radio" name="top_feature" value="prop_mode" /><span class="opt-label">Prop firm simulation mode — test under FTMO/FundedNext rules</span></label>
+        <label class="opt"><input type="radio" name="top_feature" value="reports" /><span class="opt-label">Deep performance reports — win rate, drawdown, expectancy, risk:reward</span></label>
+        <label class="opt"><input type="radio" name="top_feature" value="forward_test" /><span class="opt-label">Forward testing — run strategy on live market prices (simulated)</span></label>
+        <label class="opt"><input type="radio" name="top_feature" value="community" /><span class="opt-label">Community — see what strategies others are using and what passes</span></label>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">What would you pay per month for this platform? <span class="q-required">*</span></label>
+      <div class="options">
+        <label class="opt"><input type="radio" name="wtp" value="free_only" required /><span class="opt-label">Free only — I wouldn't pay for this</span></label>
+        <label class="opt"><input type="radio" name="wtp" value="199-499" /><span class="opt-label">₹199 – ₹499 / month</span></label>
+        <label class="opt"><input type="radio" name="wtp" value="500-999" /><span class="opt-label">₹500 – ₹999 / month</span></label>
+        <label class="opt"><input type="radio" name="wtp" value="1000-2000" /><span class="opt-label">₹1,000 – ₹2,000 / month</span></label>
+        <label class="opt"><input type="radio" name="wtp" value="2000+" /><span class="opt-label">More than ₹2,000 / month — if it's genuinely good</span></label>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">What would stop you from using this platform?</label>
+      <div class="q-hint">Be honest — this helps us more than positive feedback</div>
+      <textarea class="q-input" name="blockers" rows="3" placeholder="e.g. I already use MetaTrader and it does what I need / I don't have time to learn a new tool / I'd only use it if it connected to my broker..."></textarea>
+    </div>
+
+    <!-- SECTION 5: Contact -->
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Stay in the Loop</div>
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">Can we follow up with you for a 15-min call?</label>
+      <div class="q-hint">Only if you're open to it — completely optional. We'll share early access in return.</div>
+      <input type="text" class="q-input" name="name" placeholder="Your name (optional)" style="margin-bottom:10px;" />
+      <input type="email" class="q-input" name="email" placeholder="Email or Telegram handle (optional)" />
+    </div>
+
+    <div class="q-card">
+      <label class="q-label">Want to be notified when we launch?</label>
+      <div class="options" style="margin-top:10px;">
+        <label class="opt"><input type="radio" name="notify" value="yes" /><span class="opt-label">Yes — notify me at launch with early access pricing</span></label>
+        <label class="opt"><input type="radio" name="notify" value="no" /><span class="opt-label">No thanks</span></label>
+      </div>
+    </div>
+
+    <div class="submit-wrap">
+      <button type="submit" class="submit-btn" id="submit-btn">Submit Survey</button>
+      <div class="submit-note">Your answers are anonymous unless you share contact info above</div>
+    </div>
+
+  </form>
+</div>
+
+<!-- Thank you -->
+<div class="thankyou" id="thankyou">
+  <div class="ty-icon">🙏</div>
+  <h2>Thank you — seriously.</h2>
+  <p>Your input directly shapes what we build. We'll reach out if you left contact details, and notify you at launch.</p>
+  <div class="share-note">
+    <strong>Know another trader who'd benefit?</strong><br/>
+    Share this survey with them — the more traders we hear from, the better the platform will be for everyone.
+    <br/><br/>
+    <span id="share-url" style="color:#60a5fa;word-break:break-all;"></span>
+  </div>
+</div>
+
+<script>
+  // Scale buttons
+  const scaleState = { realistic: null, useful: null };
+
+  function setScale(name, val) {
+    scaleState[name] = val;
+    document.getElementById(name + '_val').value = val;
+    document.querySelectorAll(`#scale-${name} .scale-btn`).forEach(btn => {
+      btn.classList.toggle('selected', parseInt(btn.dataset.val) === val);
+    });
+    updateProgress();
+  }
+
+  // Progress bar
+  function updateProgress() {
+    const required = document.querySelectorAll('[required]');
+    let filled = 0;
+    const checkedGroups = new Set();
+    required.forEach(el => {
+      if (el.type === 'radio' && el.checked) checkedGroups.add(el.name);
+      if (el.type === 'checkbox' && el.checked) checkedGroups.add(el.name);
+    });
+    const totalGroups = new Set([...required].map(el => el.name)).size;
+    const pct = Math.round((checkedGroups.size / totalGroups) * 100);
+    document.getElementById('progress').style.width = Math.min(pct, 95) + '%';
+  }
+
+  document.querySelectorAll('input').forEach(el => {
+    el.addEventListener('change', updateProgress);
+  });
+
+  // Form submit
+  document.getElementById('survey-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    const form = e.target;
+    const data = {};
+
+    // Radio fields
+    ['experience','style','test_method','systematic_pct','prop_status','top_feature','wtp','notify'].forEach(name => {
+      const el = form.querySelector(`input[name="${name}"]:checked`);
+      data[name] = el ? el.value : null;
+    });
+
+    // Checkbox fields
+    ['instruments','prop_hard','frustrations'].forEach(name => {
+      const checked = [...form.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value);
+      data[name] = checked;
+    });
+
+    // Scale
+    data.realistic_score = scaleState.realistic;
+    data.useful_score = scaleState.useful;
+
+    // Text
+    data.blockers = form.querySelector('[name="blockers"]').value.trim();
+    data.name = form.querySelector('[name="name"]').value.trim();
+    data.email = form.querySelector('[name="email"]').value.trim();
+    data.submittedAt = new Date().toISOString();
+
+    try {
+      await fetch('/survey-response', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch(err) {
+      // Store locally as fallback
+      const saved = JSON.parse(localStorage.getItem('survey_responses') || '[]');
+      saved.push(data);
+      localStorage.setItem('survey_responses', JSON.stringify(saved));
+    }
+
+    document.getElementById('progress').style.width = '100%';
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('thankyou').style.display = 'block';
+    document.getElementById('share-url').textContent = window.location.href;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
