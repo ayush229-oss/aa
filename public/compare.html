@@ -250,6 +250,158 @@
     }
     .footnote a { color: #374151; text-decoration: underline; }
 
+    /* ── TAM Section ── */
+    .tam-section {
+      max-width: 980px;
+      margin: 60px auto 0;
+      padding: 0 24px;
+    }
+    .tam-title { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .tam-sub { font-size: 13px; color: #4b5563; margin-bottom: 32px; }
+
+    /* Funnel */
+    .tam-funnel { display: flex; flex-direction: column; gap: 0; }
+
+    .tam-tier {
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .tam-tier-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      gap: 20px;
+    }
+    .tam-tier-left { flex: 1; }
+    .tam-tier-label { font-size: 14px; font-weight: 700; color: #e5e7eb; margin-bottom: 4px; }
+    .tam-tier-desc { font-size: 12px; color: #6b7280; line-height: 1.45; margin-bottom: 4px; }
+    .tam-tier-sources { font-size: 10px; color: #374151; }
+
+    .tam-tier-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .tam-tier-now, .tam-tier-future {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .tam-num { font-size: 18px; font-weight: 800; color: #fff; line-height: 1; }
+    .tam-year { font-size: 10px; color: #4b5563; font-weight: 500; }
+    .tam-tier-arrow { color: #374151; font-size: 18px; }
+    .tam-cagr { font-size: 10px; color: #6b7280; position: absolute; }
+    .tam-tier-right { position: relative; padding-bottom: 16px; }
+    .tam-cagr { bottom: 0; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+    .tam-tier-bar { height: 4px; }
+    .tam-tier-1 { background: #111827; }
+    .tam-tier-1 .tam-tier-bar { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+    .tam-tier-1 .tam-num { color: #60a5fa; }
+    .tam-tier-2 { background: #0f1420; }
+    .tam-tier-2 .tam-tier-bar { background: linear-gradient(90deg, #6366f1, #4338ca); }
+    .tam-tier-2 .tam-num { color: #818cf8; }
+    .tam-tier-3 { background: #0d1118; }
+    .tam-tier-3 .tam-tier-bar { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+    .tam-tier-3 .tam-num { color: #a78bfa; }
+    .tam-tier-4 { background: #0c1016; }
+    .tam-tier-4 .tam-tier-bar { background: linear-gradient(90deg, #ec4899, #be185d); }
+    .tam-tier-4 .tam-num { color: #f472b6; }
+    .tam-tier-5 { background: #0a0e14; }
+    .tam-tier-5 .tam-tier-bar { background: linear-gradient(90deg, #34d399, #059669); }
+    .tam-tier-5 .tam-num { color: #34d399; }
+
+    .tam-tier-connector {
+      text-align: center;
+      padding: 6px 0;
+      font-size: 11px;
+      color: #374151;
+    }
+
+    /* Stats row */
+    .tam-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .tam-stat-box {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .tam-stat-n { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .tam-stat-l { font-size: 12px; font-weight: 600; color: #9ca3af; margin-bottom: 4px; }
+    .tam-stat-sub { font-size: 11px; color: #4b5563; line-height: 1.4; }
+
+    /* Global context */
+    .tam-global-row {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 28px;
+    }
+    .tam-global-header {
+      background: #0d1018;
+      padding: 12px 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4b5563;
+      border-bottom: 1px solid #1f2937;
+    }
+    .tam-global-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .tam-global-item {
+      padding: 18px 20px;
+      border-right: 1px solid #1a1d2b;
+      border-bottom: 1px solid #1a1d2b;
+    }
+    .tam-global-item:nth-child(2),
+    .tam-global-item:nth-child(4) { border-right: none; }
+    .tam-global-item:nth-child(3),
+    .tam-global-item:nth-child(4) { border-bottom: none; }
+    .tam-global-name { font-size: 14px; font-weight: 700; color: #e5e7eb; margin-bottom: 3px; }
+    .tam-global-size { font-size: 13px; font-weight: 600; color: #9ca3af; margin-bottom: 6px; }
+    .tam-global-note { font-size: 11.5px; color: #4b5563; line-height: 1.5; margin-bottom: 8px; }
+    .tam-global-access {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .access-no { background: #1f0a0a; color: #ef4444; }
+    .access-part { background: #1a1500; color: #fbbf24; }
+    .access-yes { background: #0a1a0a; color: #34d399; }
+
+    /* Opportunity note */
+    .tam-opportunity {
+      display: flex;
+      gap: 14px;
+      background: #0a1628;
+      border: 1px solid #1e3a5f;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 16px;
+      font-size: 13.5px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+    .tam-opp-icon { font-size: 22px; flex-shrink: 0; }
+    .tam-opportunity strong { color: #60a5fa; }
+
     /* ── Business Operations ── */
     .ops-section {
       max-width: 980px;
@@ -1040,6 +1192,185 @@
     </ul>
     <div class="best-for"><strong>Best for:</strong> Beginners and learners who want to test expiry strategies and understand options before going live.</div>
   </div>
+</div>
+
+<!-- TAM Section -->
+<div class="tam-section">
+  <h2 class="tam-title">Market Size (TAM)</h2>
+  <p class="tam-sub">Total addressable market from global down to what AlgoTest &amp; StockMock can actually reach</p>
+
+  <!-- Funnel -->
+  <div class="tam-funnel">
+
+    <div class="tam-tier tam-tier-1">
+      <div class="tam-tier-inner">
+        <div class="tam-tier-left">
+          <div class="tam-tier-label">Global Algorithmic Trading</div>
+          <div class="tam-tier-desc">All institutional + retail algo trading platforms worldwide</div>
+          <div class="tam-tier-sources">Grand View Research · Straits Research · Mordor Intelligence</div>
+        </div>
+        <div class="tam-tier-right">
+          <div class="tam-tier-now"><span class="tam-num">$21–51B</span><span class="tam-year">2024</span></div>
+          <div class="tam-tier-arrow">→</div>
+          <div class="tam-tier-future"><span class="tam-num">$43–150B</span><span class="tam-year">2030–33</span></div>
+          <div class="tam-cagr">CAGR ~10–13%</div>
+        </div>
+      </div>
+      <div class="tam-tier-bar" style="width:100%"></div>
+    </div>
+
+    <div class="tam-tier-connector"><span>↓ India's share of global algo activity</span></div>
+
+    <div class="tam-tier tam-tier-2">
+      <div class="tam-tier-inner">
+        <div class="tam-tier-left">
+          <div class="tam-tier-label">India Algorithmic Trading</div>
+          <div class="tam-tier-desc">Algo trading platforms, tools, and infrastructure serving Indian markets</div>
+          <div class="tam-tier-sources">IMARC Group · Grand View Research</div>
+        </div>
+        <div class="tam-tier-right">
+          <div class="tam-tier-now"><span class="tam-num">$562M–$1.05B</span><span class="tam-year">2024</span></div>
+          <div class="tam-tier-arrow">→</div>
+          <div class="tam-tier-future"><span class="tam-num">$1.27B–$2.31B</span><span class="tam-year">2030–33</span></div>
+          <div class="tam-cagr">CAGR 9.5–14.3%</div>
+        </div>
+      </div>
+      <div class="tam-tier-bar" style="width:72%"></div>
+    </div>
+
+    <div class="tam-tier-connector"><span>↓ Focused on NSE F&amp;O options segment</span></div>
+
+    <div class="tam-tier tam-tier-3">
+      <div class="tam-tier-inner">
+        <div class="tam-tier-left">
+          <div class="tam-tier-label">India F&amp;O Options Market</div>
+          <div class="tam-tier-desc">Retail traders actively trading NSE index &amp; stock options — the core user pool for both platforms</div>
+          <div class="tam-tier-sources">NSE · SEBI · CFA Institute</div>
+        </div>
+        <div class="tam-tier-right">
+          <div class="tam-tier-now"><span class="tam-num">~9M</span><span class="tam-year">active F&amp;O traders</span></div>
+          <div class="tam-tier-arrow">→</div>
+          <div class="tam-tier-future"><span class="tam-num">peaked 5.26M</span><span class="tam-year">derivatives-only (Jun 2024)</span></div>
+          <div class="tam-cagr">↓ 3M by Mar 2025 post-SEBI curbs</div>
+        </div>
+      </div>
+      <div class="tam-tier-bar" style="width:50%"></div>
+    </div>
+
+    <div class="tam-tier-connector"><span>↓ Retail traders who use backtest / automation tools</span></div>
+
+    <div class="tam-tier tam-tier-4">
+      <div class="tam-tier-inner">
+        <div class="tam-tier-left">
+          <div class="tam-tier-label">SAM — Serviceable Addressable Market</div>
+          <div class="tam-tier-desc">Options traders who actively seek strategy testing, simulation, or automation tools. Estimated 15–20% of F&amp;O user base = ~450K–1.8M users at current peak</div>
+          <div class="tam-tier-sources">Estimated from platform user bases, Telegram communities, traffic data</div>
+        </div>
+        <div class="tam-tier-right">
+          <div class="tam-tier-now"><span class="tam-num">~450K–1.8M</span><span class="tam-year">potential users</span></div>
+          <div class="tam-tier-arrow">→</div>
+          <div class="tam-tier-future"><span class="tam-num">$150–600M</span><span class="tam-year">at ₹1,000–4,000/user/yr</span></div>
+          <div class="tam-cagr">Growing as SEBI legitimises retail algo</div>
+        </div>
+      </div>
+      <div class="tam-tier-bar" style="width:32%"></div>
+    </div>
+
+    <div class="tam-tier-connector"><span>↓ What they've actually captured</span></div>
+
+    <div class="tam-tier tam-tier-5">
+      <div class="tam-tier-inner">
+        <div class="tam-tier-left">
+          <div class="tam-tier-label">SOM — Current Captured Market</div>
+          <div class="tam-tier-desc">Combined paying users of AlgoTest + StockMock based on reported revenue and pricing</div>
+          <div class="tam-tier-sources">Tracxn · Latka · Similarweb (public data, estimated)</div>
+        </div>
+        <div class="tam-tier-right">
+          <div class="tam-tier-now"><span class="tam-num">₹11.2 Cr</span><span class="tam-year">combined revenue FY25</span></div>
+          <div class="tam-tier-arrow">→</div>
+          <div class="tam-tier-future"><span class="tam-num">&lt;1%</span><span class="tam-year">of SAM captured</span></div>
+          <div class="tam-cagr" style="color:#34d399">Massive room to grow</div>
+        </div>
+      </div>
+      <div class="tam-tier-bar" style="width:12%"></div>
+    </div>
+
+  </div>
+
+  <!-- India market stats -->
+  <div class="tam-stats-row">
+    <div class="tam-stat-box">
+      <div class="tam-stat-n">21 Cr+</div>
+      <div class="tam-stat-l">Demat accounts in India (2025)</div>
+      <div class="tam-stat-sub">Up from 4 Cr in 2019 — 5× growth in 6 years</div>
+    </div>
+    <div class="tam-stat-box">
+      <div class="tam-stat-n">60–73%</div>
+      <div class="tam-stat-l">NSE volume driven by algos</div>
+      <div class="tam-stat-sub">73% in stock futures; retail share growing</div>
+    </div>
+    <div class="tam-stat-box">
+      <div class="tam-stat-n">#1→#2</div>
+      <div class="tam-stat-l">NSE global derivatives rank</div>
+      <div class="tam-stat-sub">World's largest for 5 yrs; recently overtaken by Brazil's B3 on contract count</div>
+    </div>
+    <div class="tam-stat-box">
+      <div class="tam-stat-n">⅔</div>
+      <div class="tam-stat-l">Global F&amp;O volume from India</div>
+      <div class="tam-stat-sub">India generated 67%+ of all global F&amp;O contracts traded in Q2 2024</div>
+    </div>
+    <div class="tam-stat-box">
+      <div class="tam-stat-n">91%</div>
+      <div class="tam-stat-l">F&amp;O retail traders making losses</div>
+      <div class="tam-stat-sub">₹1.05 Trillion net loss in FY25 — drives demand for systematic/algo approaches</div>
+    </div>
+    <div class="tam-stat-box">
+      <div class="tam-stat-n">38.5%</div>
+      <div class="tam-stat-l">Retail share of India algo market by 2026</div>
+      <div class="tam-stat-sub">Fastest-growing segment; SEBI 2025 framework formally unlocked it</div>
+    </div>
+  </div>
+
+  <!-- Global context -->
+  <div class="tam-global-row">
+    <div class="tam-global-header">Global Markets — Why They're Out of Reach (For Now)</div>
+    <div class="tam-global-grid">
+      <div class="tam-global-item">
+        <div class="tam-global-name">🇺🇸 US Options Market</div>
+        <div class="tam-global-size">$1.79B platform TAM (2024)</div>
+        <div class="tam-global-note">13.8B contracts/year · 59M daily contracts · CAGR 9.7% → 2032 · Dominated by TastyTrade, IBKR, Thinkorswim</div>
+        <div class="tam-global-access access-no">Inaccessible — no CBOE data, no US broker APIs, no SEC registration</div>
+      </div>
+      <div class="tam-global-item">
+        <div class="tam-global-name">🌍 Global Algo Platform</div>
+        <div class="tam-global-size">$21–51B TAM (2024)</div>
+        <div class="tam-global-note">QuantConnect (300K users), TradingView (100M users), MetaTrader (50M) already dominate. Market is mature.</div>
+        <div class="tam-global-access access-no">Inaccessible — no global data, no broker partnerships, no brand recognition</div>
+      </div>
+      <div class="tam-global-item">
+        <div class="tam-global-name">₿ Crypto Trading</div>
+        <div class="tam-global-size">$27B platform TAM (2024)</div>
+        <div class="tam-global-note">$3T market cap, 72% retail participation. AlgoTest already integrated with Delta Exchange for BTC/ETH</div>
+        <div class="tam-global-access access-part">Partial access — AlgoTest only, via Delta Exchange, limited instruments</div>
+      </div>
+      <div class="tam-global-item">
+        <div class="tam-global-name">💱 Forex Market</div>
+        <div class="tam-global-size">$9.6T daily volume</div>
+        <div class="tam-global-note">$11.3B platform market (2023). Retail traders: 186K active globally. Platforms: MetaTrader, cTrader, IBKR dominate.</div>
+        <div class="tam-global-access access-no">Inaccessible — neither platform supports any forex pair</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Opportunity note -->
+  <div class="tam-opportunity">
+    <div class="tam-opp-icon">💡</div>
+    <div>
+      <strong>The real opportunity isn't going global — it's depth in India.</strong>
+      Only ~15–20% of India's 9M F&amp;O traders currently use any kind of systematic tool. With 91% of retail traders losing money, the push toward algo and systematic trading is structurally inevitable. Both platforms are sitting on a largely untapped domestic SAM of ₹1,000–5,000 Cr — before needing to look outside India at all.
+    </div>
+  </div>
+
 </div>
 
 <!-- Business Operations -->
